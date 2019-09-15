@@ -1,9 +1,14 @@
 <template>
-  <div class="content">
-    <!-- <img src=""> -->
+  <div class="content" :data-id="post.id">
+    <img
+      v-if="post.user"
+      width="40"
+      style="border-radius: 50%;"
+      :src="post.user.icon"
+    />
     <div class="message">
       <div class="message__info">
-        <p>message__info</p>
+        <p v-if="post.user">{{ post.user.name }}</p>
         <span>{{ post.createdAt | timestamp }}</span>
       </div>
       <div class="message__body">
@@ -17,12 +22,17 @@
 import dayjs from 'dayjs'
 
 export default {
-  props: {
-    post: Object
-  },
   filters: {
     timestamp(val) {
       return dayjs.unix(val - 3000000000).format('hh:mm・YYYY/MM/DD')
+    }
+  },
+  props: {
+    post: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     }
   }
 }
