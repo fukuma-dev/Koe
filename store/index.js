@@ -14,6 +14,12 @@ export const getters = {
 export const mutations = {
   setPosts(state, { posts }) {
     state.posts = [...posts]
+  },
+  addPost(state, { post }) {
+    if (state.posts.find(p => p.id === post.id)) {
+      return
+    }
+    state.posts = [...state.posts, post]
   }
 }
 

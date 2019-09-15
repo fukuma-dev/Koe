@@ -19,6 +19,11 @@ export default {
     async handleSubmit() {
       await this.$store.dispatch('sendMessage', { body: this.body })
       this.body = ''
+      setTimeout(() => {
+        document.querySelector('html').scrollTo({
+          top: 99999999
+        })
+      }, 200)
     }
   }
 }

@@ -19,6 +19,15 @@ import Content from '~/components/Content.vue'
 
 export default {
   components: { Sidebar, Content, Form },
+  mounted() {
+    this.$firestore.collection('posts').onSnapshot(snapshot => {
+      if (snapshot.docChanges().length !== 1) return
+      snapshot.docChanges().forEach(change => {
+        const post = change.doc.data()
+        this.$store.commit('addPost', { post })
+      })
+    })
+  },
   computed: {
     posts() {
       return this.$store.getters.posts
