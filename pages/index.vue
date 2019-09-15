@@ -1,11 +1,9 @@
 <template>
   <div class="container">
     <div class="side-area">
-      <p>side-area</p>
       <Sidebar />
     </div>
     <div class="post-area">
-      <p>post-area</p>
       <Content v-for="post in posts" :key="post.id" :post="post" />
       <Form />
     </div>
@@ -19,6 +17,11 @@ import Content from '~/components/Content.vue'
 
 export default {
   components: { Sidebar, Content, Form },
+  computed: {
+    posts() {
+      return this.$store.getters.posts
+    }
+  },
   mounted() {
     this.$firestore.collection('posts').onSnapshot(snapshot => {
       if (snapshot.docChanges().length !== 1) return
@@ -27,11 +30,6 @@ export default {
         this.$store.commit('addPost', { post })
       })
     })
-  },
-  computed: {
-    posts() {
-      return this.$store.getters.posts
-    }
   }
 }
 </script>
