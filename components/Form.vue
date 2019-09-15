@@ -1,7 +1,12 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <!-- TODO: ログインしてないと投稿できないように表示制御 -->
-    <div class="form__content">
+    <div
+      class="form__content"
+      :style="{
+        opacity: $store.getters['user'] ? '1.0' : '0.5',
+        pointerEvents: $store.getters['user'] ? '' : 'none'
+      }"
+    >
       <textarea v-model="body" max="100"></textarea>
       <button>送信</button>
     </div>
