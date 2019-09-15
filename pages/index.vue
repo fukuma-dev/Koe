@@ -23,6 +23,8 @@ export default {
     }
   },
   mounted() {
+    const $ = el => document.querySelector(el)
+    $('html').scrollTo({ top: 9999999 })
     this.$firestore.collection('posts').onSnapshot(snapshot => {
       if (snapshot.docChanges().length !== 1) return
       snapshot.docChanges().forEach(change => {
