@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      await console.log(this.body)
+      await this.$store.dispatch('sendMessage', { body: this.body })
       this.body = ''
     }
   }
