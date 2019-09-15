@@ -1,6 +1,6 @@
-# help-sns
+# ask-someone
 
-> My wonderful Nuxt.js project
+> Nuxt.js x Firebase x Vuetify
 
 ## Build Setup
 
