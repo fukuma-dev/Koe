@@ -6,7 +6,7 @@
     </div>
     <div class="post-area">
       <p>post-area</p>
-      <Content />
+      <Content v-for="post in posts" :key="post.id" :post="post" />
       <Form />
     </div>
   </div>
@@ -18,7 +18,12 @@ import Form from '~/components/Form.vue'
 import Content from '~/components/Content.vue'
 
 export default {
-  components: { Sidebar, Content, Form }
+  components: { Sidebar, Content, Form },
+  computed: {
+    posts() {
+      return this.$store.getters.posts
+    }
+  }
 }
 </script>
 

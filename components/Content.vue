@@ -7,11 +7,19 @@
         <span>created.at</span>
       </div>
       <div class="message__body">
-        <p>message__body</p>
+        {{ post.body }}
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    post: Object
+  }
+}
+</script>
 
 <style scoped lang="scss">
 .content {
