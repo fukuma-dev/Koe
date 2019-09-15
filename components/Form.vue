@@ -16,7 +16,10 @@ export default {
     }
   },
   methods: {
-    async handleSubmit() {}
+    async handleSubmit() {
+      await console.log(this.body)
+      this.body = ''
+    }
   }
 }
 </script>
