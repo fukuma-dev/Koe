@@ -17,6 +17,7 @@
     "cross-env": "^5.2.0",
     "dayjs": "^1.8.2",
     "firebase": "^6.6.1",
+    "firebase-admin": "^8.5.0",
     "node-sass": "^4.11.0",
     "nuxt": "^2.4.0",
     "sass-loader": "^7.1.0",
