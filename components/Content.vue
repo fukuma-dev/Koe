@@ -4,7 +4,7 @@
     <div class="message">
       <div class="message__info">
         <p>message__info</p>
-        <span>created.at</span>
+        <span>{{ post.createdAt | timestamp }}</span>
       </div>
       <div class="message__body">
         {{ post.body }}
@@ -14,9 +14,16 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 export default {
   props: {
     post: Object
+  },
+  filters: {
+    timestamp(val) {
+      return dayjs.unix(val - 3000000000).format('hh:mm・YYYY/MM/DD')
+    }
   }
 }
 </script>
