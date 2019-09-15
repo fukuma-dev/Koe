@@ -15,9 +15,10 @@
 <script>
 import Sidebar from '~/components/Sidebar.vue'
 import Form from '~/components/Form.vue'
+import Content from '~/components/Content.vue'
 
 export default {
-  components: { Sidebar, Form }
+  components: { Sidebar, Content, Form }
 }
 </script>
 
