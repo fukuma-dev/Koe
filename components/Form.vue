@@ -60,7 +60,8 @@ input {
   display: block;
   height: 100%;
   padding: 12px;
-  font-size: 14px;
+  font-size: 16px;
+  transform: scale(0.8);
   resize: none;
 }
 
