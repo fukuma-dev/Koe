@@ -64,7 +64,6 @@ export default {
     font-size: 14px;
     line-height: 1;
     & span {
-      opacity: 0.6;
       font-size: 12px;
       display: inline-block;
       margin-left: 8px;

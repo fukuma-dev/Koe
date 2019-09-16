@@ -1,5 +1,11 @@
 <template>
-  <div class="sidebar">
+  <div
+    :class="{
+      'sidebar-sp': breakpoint.xsOnly,
+      'sidebar-pc': !breakpoint.xsOnly
+    }"
+  >
+    <h1 class="display-2 font-weight-light my-3">Koe</h1>
     <div v-if="user" class="sidebar-user">
       <img :src="user.photoURL" width="32" alt="" />
       {{ user.displayName }}
@@ -13,10 +19,17 @@ export default {
   data() {
     return {
       user: null,
-      isLoggedIn: false
+      isLoggedIn: false,
+      isHydrated: false
+    }
+  },
+  computed: {
+    breakpoint() {
+      return this.isHydrated ? this.$vuetify.breakpoint : {}
     }
   },
   async mounted() {
+    this.isHydrated = true
     const user = await this.auth()
     this.$store.commit('setUser', { user })
     this.user = user
@@ -49,8 +62,18 @@ export default {
 </script>
 
 <style scoped style="scss">
-.sidebar {
+.title {
+  padding: 30px;
+}
+
+.sidebar-pc {
   padding: 16px;
+}
+
+.sidebar-sp {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .sidebar-user {

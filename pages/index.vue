@@ -1,6 +1,11 @@
 <template>
-  <div class="container">
-    <div class="side-area">
+  <div :class="{ container: !breakpoint.xsOnly }">
+    <div
+      :class="{
+        'side-area-sp': breakpoint.xsOnly,
+        'side-area-pc': !breakpoint.xsOnly
+      }"
+    >
       <Sidebar />
     </div>
     <div class="post-area">
@@ -17,12 +22,21 @@ import Content from '~/components/Content.vue'
 
 export default {
   components: { Sidebar, Content, Form },
+  data() {
+    return {
+      isHydrated: false
+    }
+  },
   computed: {
     posts() {
       return this.$store.getters.posts
+    },
+    breakpoint() {
+      return this.isHydrated ? this.$vuetify.breakpoint : {}
     }
   },
   mounted() {
+    this.isHydrated = true
     const $ = el => document.querySelector(el)
     $('html').scrollTo({ top: 9999999 })
     this.$firestore.collection('posts').onSnapshot(snapshot => {
@@ -42,7 +56,15 @@ export default {
   align-items: flex-start;
 }
 
-.side-area {
+.side-area-sp {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  background-color: #303030;
+  opacity: 0.9;
+}
+
+.side-area-pc {
   width: 300px;
   position: sticky;
   top: 0;
