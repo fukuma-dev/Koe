@@ -1,5 +1,11 @@
 <template>
-  <div class="content" :data-id="post.id">
+  <div
+    class="content"
+    :data-id="post.id"
+    :style="{
+      filter: $store.getters['user'] ? 'none' : 'blur(6px)'
+    }"
+  >
     <img
       v-if="post.user"
       width="40"
