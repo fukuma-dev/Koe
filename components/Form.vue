@@ -7,7 +7,7 @@
         pointerEvents: $store.getters['user'] ? '' : 'none'
       }"
     >
-      <textarea v-model="body" max="100"></textarea>
+      <input v-model="body" max="100" />
       <button>送信</button>
     </div>
   </form>
@@ -39,7 +39,8 @@ export default {
   display: flex;
   position: sticky;
   bottom: 0;
-  background: #15202b;
+  padding: 15px 0;
+  background: #303030;
   &__content {
     flex: 1;
     display: flex;
@@ -50,7 +51,7 @@ export default {
   }
 }
 
-textarea {
+input {
   flex: 1;
   background: transparent;
   color: #fff;
