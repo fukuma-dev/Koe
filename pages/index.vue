@@ -36,6 +36,7 @@ export default {
     }
   },
   mounted() {
+    this.$store.dispatch('nuxtClientInit')
     this.isHydrated = true
     const $ = el => document.querySelector(el)
     $('html').scrollTo({ top: 9999999 })

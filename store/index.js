@@ -35,7 +35,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({ commit }) {
+  async nuxtClientInit({ commit }) {
     const posts = []
     const users = []
     const [usersSnapshot, postsSnapshot] = await Promise.all([
